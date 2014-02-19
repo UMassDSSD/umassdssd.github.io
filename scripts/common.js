@@ -79,6 +79,11 @@ url["getGET"] = GET;
 
 var dom = {};
 
+/**
+ * DOM Element
+ * @constructor
+ * @param {DOMElement|HTMLElement|string} tag
+ */
 function DOMElement(tag) {
 	if(!isDOMElement(this)) {
 		return new DOMElement(tag);
