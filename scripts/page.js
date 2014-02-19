@@ -30,6 +30,8 @@ function makeUnderConstructionSection() {
 var wrapper = document.createElement("div");
 wrapper.id = "wrapper";
 
+wrapper.innerHTML += "Let's work together! Feel free to push something to the repo :-)";
+
 function onPageLoad() {
 	document.body.appendChild(Util.isDeveloperMode() ? wrapper : makeUnderConstructionSection());
 }
