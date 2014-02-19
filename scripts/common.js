@@ -60,6 +60,10 @@ function removeEmptyArrayItem(array) {
     });
 }
 
+function makeElement(tagName) {
+	return document.createElement(tagName);
+}
+
 function JSONParse(jsonString) {
 	if(isString(jsonString)) {
 		if(isEmpty(jsonString)) {
