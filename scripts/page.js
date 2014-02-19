@@ -3,37 +3,42 @@ var document = window.document;
 var location = window.location;
 var navigator = window.navigator;
 
+//Shortcut to Util.DOM.Element
+var element = Util.DOM.Element;
+
 function makeUnderConstructionSection() {
-	var undercon = document.createElement("section");
-	undercon.id = "underconstruction";
-	undercon.appendChild((function(h1) {
-		h1.innerHTML += "CAUTION: <nobr>Under Construction</nobr>";
-		return h1;
-	})(document.createElement("h1")));
-	undercon.appendChild((function(div) {
-		div.innerHTML += "UMass Dartmouth Society for Software Developers";
-		return div;
-	})(document.createElement("div")));
-	undercon.appendChild((function(ul) {
-		ul.innerHTML += "<li><a href='//facebook.com/groups/566724943376702' target='_blank'>Facebook</a></li>";
-		ul.innerHTML += "<li><a href='//github.com/UMassDSSD' target='_blank'>GitHub</a></li>";
-		return ul;
-	})(document.createElement("ul")));
-	undercon.appendChild((function(div) {
-		div.classList.add("hint");
-		div.innerHTML += "A <pre>?dev=yes</pre> may help.";
-		return div;
-	})(document.createElement("div")));
-	return undercon;
+	return element.section().id("underconstruction").child([
+		element.h1().child("CAUTION: <nobr>Under Construction</nobr>"),
+		element.div().child("UMass Dartmouth Society for Software Developers"),
+		element.ul().child([
+			element.li().child(element.a().attributes({
+				"href": "//facebook.com/groups/566724943376702",
+				"target": "_blank"
+			}).child("Facebook")),
+			element.li().child(element.a().attributes({
+				"href": "//github.com/UMassDSSD",
+				"target": "_blank"
+			}).child("GitHub"))
+		]),
+		element.div().classList("hint")
+			.child("A ")
+			.child(element.pre().child("?dev=yes"))
+			.child(" may help.")
+	]);
 }
 
-var wrapper = document.createElement("div");
-wrapper.id = "wrapper";
-
-wrapper.innerHTML += "<pre>Yes! You could be the developer! Feel free to push something to the <a href='//github.com/UMassDSSD/umassdssd.github.io' target='_target'>repo</a> :-)</pre>";
+var wrapper = element.div().id("wrapper").child(
+	element.pre()
+		.child("Yes! You could be the developer! Feel free to push something to the ")
+		.child(element.a().attributes({
+			"href": "//github.com/UMassDSSD/umassdssd.github.io",
+			"target": "_blank"
+		}).child("repo"))
+		.child(" :-)")
+);
 
 function onPageLoad() {
-	document.body.appendChild(Util.isDeveloperMode() ? wrapper : makeUnderConstructionSection());
+	element(document.body).child(Util.isDeveloperMode() ? wrapper : makeUnderConstructionSection());
 }
 
 window.addEventListener("load", onPageLoad, false);
