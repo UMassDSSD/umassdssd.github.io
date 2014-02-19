@@ -1,45 +1,63 @@
 (function(window) {
-"strict mode";
+"use strict";
 var document = window.document;
 var location = window.location;
 var navigator = window.navigator;
 
 var util = {};
 
-function isString(string) {
-	return typeof string === "string";
-}
-
-function isEmptyString(string) {
-	return isString(string) && string.length === 0;
-}
-
-function isNonEmptyString(string) {
-	return isString(string) && string.length > 0;
-}
-
 function isArray(array) {
-	return array instanceof Array;
-}
-
-function isEmptyArray(array) {
-	return isArray(array) && array.length === 0;
-}
-
-function isNonEmptyArray(array) {
-	return isArray(array) && array.length > 0;
-}
-
-function isHTMLElement(htmlElement) {
-	return htmlElement instanceof HTMLElement;
+    return array instanceof Array;
 }
 
 function isDOMElement(domElement) {
-	return domElement instanceof DOMElement;
+    return domElement instanceof DOMElement;
 }
 
-function makeElement(tagName) {
-	return document.createElement(tagName);
+function isDOMTokenList(domTokenList) {
+    return domTokenList instanceof DOMTokenList;
+}
+
+function isEmpty(thing) {
+    return thing.length === 0;
+}
+
+function isNotEmpty(thing) {
+    return thing.length > 0;
+}
+
+function isFunction(theFunction) {
+    return typeof theFunction === "function";
+}
+
+function isHTMLElement(htmlElement) {
+    return htmlElement instanceof HTMLElement;
+}
+
+function isNodeList(nodeList) {
+    return nodeList instanceof NodeList;
+}
+
+function isObject(theObject) {
+    return theObject instanceof Object;
+}
+
+function isString(string) {
+    return typeof string === "string";
+}
+
+function replaceWhiteSpaceWith(string, replaceWith) {
+    return String(string).replace(/\s/g, String(replaceWith));
+}
+
+function removeWhiteSpace(string) {
+    return replaceWhiteSpaceWith(string, "");
+}
+
+function removeEmptyArrayItem(array) {
+    return array.filter(function(item) {
+        return isNotEmpty(item);
+    });
 }
 
 function JSONParse(jsonString) {
