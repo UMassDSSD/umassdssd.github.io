@@ -30,7 +30,7 @@ function makeUnderConstructionSection() {
 var wrapper = document.createElement("div");
 wrapper.id = "wrapper";
 
-wrapper.innerHTML += "Let's work together! Feel free to push something to the repo :-)";
+wrapper.innerHTML += "<pre>Yes! You could be the developer! Feel free to push something to the <a href='//github.com/UMassDSSD/umassdssd.github.io' target='_target'>repo</a> :-)</pre>";
 
 function onPageLoad() {
 	document.body.appendChild(Util.isDeveloperMode() ? wrapper : makeUnderConstructionSection());
