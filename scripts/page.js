@@ -18,7 +18,11 @@ function makeUnderConstructionSection() {
 			element.li().child(element.a().attributes({
 				"href": "//github.com/UMassDSSD",
 				"target": "_blank"
-			}).child("GitHub"))
+			}).child("GitHub")),
+			element.li().child(element.a().attributes({
+				"href": "//linkedin.com/groups?gid=7413339",
+				"target": "_blank"
+			}).child("LinkedIn"))
 		]),
 		element.div().classList("hint")
 			.child("A ")
