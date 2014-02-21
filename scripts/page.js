@@ -10,6 +10,7 @@ var navigator = window.navigator;
 //Shortcut to Util.DOM.Element
 var element = Util.DOM.Element;
 var ajax = Util.AJAX.Get;
+var getGET =  Util.URL.getGET;
 
 
 
