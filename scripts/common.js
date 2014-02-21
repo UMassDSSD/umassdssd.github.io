@@ -320,10 +320,7 @@ dom["Element"] = DOMElement;
 
 util["DOM"] = dom;
 
-function isDev() {
-	return GET()["dev"] === "yes";
 }
-util["isDeveloperMode"] = isDev;
 
 window["Util"] = util;
 })(window);
