@@ -1,5 +1,9 @@
 [
 	{
+		"name": "home",
+		"title": "Home",
+	},
+	{
 		"name": "events",
 		"title": "Events"
 	},
