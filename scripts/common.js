@@ -65,7 +65,7 @@ function removeEmptyArrayItem(array) {
 }
 
 function makeElement(tagName) {
-	return document.createElement(tagName);
+	return document.createElement(((!!tagName) && isString(tagName) && isNotEmpty(tagName)) ? tagName : "div");
 }
 
 function JSONParse(jsonString) {
