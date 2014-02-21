@@ -15,56 +15,25 @@ pre {
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 }
 
-section#underconstruction {
-	width: 100%;
-	height: 100%;
-	background: rgba(245, 220, 0, 1);
-	font-size: 0.75cm;
-	text-align: center;
 }
 
-section#underconstruction h1 {
-	background: black;
-	color: rgba(245, 220, 0, 1);
-	font-family: 'Open Sans Condensed' , Impact, sans-serif;
 #wrapper {
 	font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 	font-size: 0.2in;
 }
 
-section#underconstruction div {
-	padding-top: 0.25em;
 }
 
-section#underconstruction ul li {
-	display: inline-block;
-	padding: 0.5em 0;
-}
-
-section#underconstruction ul li a {
-	margin: 0 0.25em;
-	padding: 0.125em 0.25em;
-	text-decoration: none;
-	color: rgba(245, 220, 0, 1);
-	background: black;
-	font-weight: 700;
-}
-
-section#underconstruction div.hint {
-	font-size: 0.5em;
-	color: transparent;
-}
-
-section#underconstruction div pre {
 	display: inline-block;
 }
 
-section#underconstruction div pre::selection {
-	color: white;
-	background-color: green;
 }
 
-section#underconstruction div.hint::selection {
-	color: white;
-	background-color: green;
+}
+
+	display: inline-block;
+}
+
+}
+
 }
