@@ -6,6 +6,10 @@ var navigator = window.navigator;
 
 var util = {};
 
+function isAJAXGet(ajaxGet) {
+	return ajaxGet instanceof AJAXGet;
+}
+
 function isArray(array) {
     return array instanceof Array;
 }
