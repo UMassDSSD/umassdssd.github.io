@@ -27,6 +27,8 @@ section#underconstruction h1 {
 	background: black;
 	color: rgba(245, 220, 0, 1);
 	font-family: 'Open Sans Condensed' , Impact, sans-serif;
+#wrapper {
+	font-size: 0.2in;
 }
 
 section#underconstruction div {
