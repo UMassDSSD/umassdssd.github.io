@@ -11,6 +11,8 @@ html, body, #wrapper {
 	height: 100%;
 }
 
+pre {
+	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 }
 
 section#underconstruction {
