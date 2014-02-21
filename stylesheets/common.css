@@ -15,6 +15,13 @@ pre {
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 }
 
+body {
+	background: linear-gradient(rgba(0, 0, 0, 1), rgba(10, 41, 114, 1)), black;
+	background-size: 100% 3in, 100% 100%;
+	background-repeat: no-repeat, repeat;
+	background-position: bottom, bottom;
+	background-attachment: fixed;
+	color: rgba(250, 250, 250, 1);
 }
 
 #wrapper {
@@ -22,18 +29,67 @@ pre {
 	font-size: 0.2in;
 }
 
+#page-header {
+	position: relative;
+	top: 1em;
+	max-width: 10in;
+	margin: 0 auto;
 }
 
+#logo {
+	display: inline-block;
+	width: 1in;
+	height: 1in;
+	overflow: hidden;
+	font-size: 1em;
+	line-height: 5em;
+	text-align: center;
+	text-indent: 100%;
+	white-space: nowrap;
+	background: url('../images/logo-bw.png');
+	background-size: 100% 100%;
+}
+
+#navbar {
+	display: inline-block;
+	position: absolute;
+	top: 2em;
+}
+
+#navbar ul {
+	list-style-type: none;
+}
+
+#navbar ul li {
 	display: inline-block;
 }
 
+#navbar ul li a {
+	text-decoration: none;
+	margin: 1em;
+	height: 100%;
+	color: rgba(255, 255, 255, 1);
+	transition: text-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+	font-weight: 600;
 }
 
+#navbar ul li a.current-page {
+	color: rgba(255, 215, 0, 1);
 }
 
-	display: inline-block;
+#navbar ul li a:hover {
+	text-shadow: 0 0 5px rgba(255, 215, 0, 1);
+	color: rgba(255, 212, 120, 1);
 }
 
+#page-content {
+	position: relative;
+	top: 0.5in;
+	margin-top: 2em;
+	max-width: 10in;
+	margin: 0 auto;
 }
 
+#page-content h1 {
+	color: rgba(255, 212, 120, 1);
 }
