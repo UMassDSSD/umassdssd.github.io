@@ -22,6 +22,15 @@ var wrapper = element.div().id("wrapper").child([
 	element.section().id("page-content")
 ]);
 
+ajax("metadata/navlinks.json").success(function(links) {
+	element(document.getElementById("navbar").firstChild).child(
+		links.map(function(linkMeta) {
+			return element.li().child(element.a().child(linkMeta["title"]).attributes({
+				"href": ".?p=" + linkMeta["name"]
+			}).id("navlink-" + linkMeta["name"]));
+		})
+	);
+}).load().as("json");
 
 function onPageLoad() {
 	element(document.body).child(wrapper);
