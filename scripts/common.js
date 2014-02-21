@@ -103,6 +103,8 @@ function GET() {
 }
 url["getGET"] = GET;
 
+util["URL"] = url;
+
 var dom = {};
 
 /**
