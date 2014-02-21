@@ -10,7 +10,7 @@ var element = Util.DOM.Element;
 
 
 function onPageLoad() {
-	element(document.body).child(Util.isDeveloperMode() ? wrapper : makeUnderConstructionSection());
+	element(document.body).child(wrapper);
 }
 
 window.addEventListener("load", onPageLoad, false);
