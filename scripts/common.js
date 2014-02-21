@@ -321,6 +321,110 @@ dom["Element"] = DOMElement;
 util["DOM"] = dom;
 
 var ajax = {};
+
+/**
+ * @constructor
+ */
+function AJAXGet(path) {
+	if(!isAJAXGet(this)) {
+		return new AJAXGet(path);
+	}
+
+	if(!isString(path)) {
+		path = "";
+	}
+
+	var xhr = new XMLHttpRequest();
+	var self = this;
+
+	var loaded = false;
+
+	var successCallback;
+	var failCallback;
+	var async = true;
+
+	var types = [{
+        "name": "raw",
+        "parse": function(txt) {
+            return txt;
+        }
+    }];
+    var typeID = 0;
+
+    types.push({
+        "name": "json",
+        "parse": function(txt) {
+            return JSONParse(txt);
+        }
+    });
+
+	this["path"] = function(thePath) {
+		path = isString(thePath) ? thePath : "";
+		return self;
+	}
+
+	this["success"] = function(callback) {
+		if(isFunction(callback)) {
+			successCallback = callback
+		} else {
+			throw new Error("The argument isn't a function.");
+		}
+		return self;
+	}
+
+	this["fail"] = function(callback) {
+		if(isFunction(callback)) {
+			failCallback = callback;
+		} else {
+			throw new Error("The arugment isn't a function");
+		}
+		return self;
+	}
+
+	this["async"] = function(asyncFlag) {
+		async = Boolean(asyncFlag);
+		return self;
+	}
+
+	this["load"] = function() {
+		loaded = false;
+		if(!path || (isString(path) && isEmpty(path))) {
+			throw new Error('Variable "path" is not initiated yet.');
+		}
+
+		xhr.open("GET", path, true);
+		xhr.send();
+
+		var actions = {};
+
+		actions["as"] = function(dataType) {
+            var id = types.map(function(i){return i.name;}).indexOf(dataType);
+            var valid = id != -1;
+            typeID = valid ? id : 0;
+            return valid;
+        }
+
+        return actions;
+	}
+
+	this["isLoaded"] = function() {
+		return loaded;
+	}
+
+	xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4) {
+            loaded = true;
+            if(xhr.status === 200) {
+                if(successCallback) {
+                    successCallback(types[typeID]["parse"](xhr.responseText));
+                } else {
+                    if(failCallback) {
+                        failCallback(xhr);
+                    }
+                }
+            }
+        }
+    }
 }
 
 ajax["Get"] = AJAXGet;
