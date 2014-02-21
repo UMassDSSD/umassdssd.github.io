@@ -32,6 +32,13 @@ ajax("metadata/navlinks.json").success(function(links) {
 	);
 }).load().as("json");
 
+var cp = getGET()["p"];
+
+ajax("pages/" + (((!!cp) && (typeof cp === "string") && (cp.length > 0)) ? getGET()["p"] : homePage) + ".html").success(function(html) {
+	element(document.getElementById("navlink-" + cp)).classList("current-page");
+	element(document.getElementById("page-content")).child(html);
+}).load();
+
 function onPageLoad() {
 	element(document.body).child(wrapper);
 }
