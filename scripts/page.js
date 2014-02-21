@@ -1,5 +1,8 @@
 (function(window) {
 "use strict";
+
+var homePage = "home";
+
 var document = window.document;
 var location = window.location;
 var navigator = window.navigator;
