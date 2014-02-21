@@ -1,0 +1,26 @@
+[
+	{
+		"name": "events",
+		"title": "Events"
+	},
+	{
+		"name": "news",
+		"title": "News"
+	},
+	{
+		"name": "projects",
+		"title": "Projects"
+	},
+	{
+		"name": "about",
+		"title": "About"
+	},
+	{
+		"name": "links",
+		"title": "Links"
+	},
+	{
+		"name": "contact",
+		"title": "Contact"
+	}
+]
