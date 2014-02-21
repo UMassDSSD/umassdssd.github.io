@@ -11,8 +11,6 @@ html, body, #wrapper {
 	height: 100%;
 }
 
-body {
-	font-family: 'Open Sans', sans-serif;
 }
 
 section#underconstruction {
@@ -28,6 +26,7 @@ section#underconstruction h1 {
 	color: rgba(245, 220, 0, 1);
 	font-family: 'Open Sans Condensed' , Impact, sans-serif;
 #wrapper {
+	font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 	font-size: 0.2in;
 }
 
