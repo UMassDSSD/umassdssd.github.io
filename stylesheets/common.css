@@ -11,6 +11,11 @@ html, body, #wrapper {
 	height: 100%;
 }
 
+a {
+	text-decoration: none;
+	color: rgba(255, 235, 30, 1);
+}
+
 pre {
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 }
