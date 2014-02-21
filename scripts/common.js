@@ -320,7 +320,12 @@ dom["Element"] = DOMElement;
 
 util["DOM"] = dom;
 
+var ajax = {};
 }
+
+ajax["Get"] = AJAXGet;
+
+util["AJAX"] = ajax;
 
 window["Util"] = util;
 })(window);
