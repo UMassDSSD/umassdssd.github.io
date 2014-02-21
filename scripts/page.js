@@ -37,6 +37,7 @@ var cp = getGET()["p"];
 ajax("pages/" + (((!!cp) && (typeof cp === "string") && (cp.length > 0)) ? getGET()["p"] : homePage) + ".html").success(function(html) {
 	element(document.getElementById("navlink-" + cp)).classList("current-page");
 	element(document.getElementById("page-content")).child(html);
+	eval(Array.prototype.slice.call(document.getElementById("page-content").getElementsByTagName("script")).map(function(a){return a.innerHTML}).join(";"));
 }).load();
 
 function onPageLoad() {
