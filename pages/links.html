@@ -1,0 +1,46 @@
+<script type="text/javascript">
+var links = [
+	{
+		"title": "Facebook",
+		"url": "//facebook.com/groups/566724943376702"
+	},
+	{
+		"title": "GitHub",
+		"url": "//github.com/UMassDSSD"
+	},
+	{
+		"title": "LinkedIn",
+		"url": "//linkedin.com/groups?gid=7413339"
+	}
+];
+
+var element = Util.DOM.Element;
+element(document.getElementById("page-content")).child(element.ul().child(links.map(function(linkMeta){
+	return element.li().child(element.a().child(linkMeta["title"]).attributes({
+		"href": linkMeta["url"],
+		"target": "_blank"
+	}));
+})));
+</script>
+
+<style type="text/css">
+	#page-content {
+		text-align: center;
+	}
+	#page-content ul {
+		list-style-type: none;
+		display: inline-block;
+	}
+	#page-content ul li {
+		display: inline-block;
+	}
+	#page-content ul li a {
+		margin: 0.5em;
+		padding: 0.25em;
+		background: rgba(255, 215, 0, 1);
+		color: rgba(10, 41, 114, 1);
+		font-weight: 700;
+		font-size: 1.5em;
+		text-decoration: none;
+	}
+</style>
