@@ -2,6 +2,7 @@
 	{
 		"name": "home",
 		"title": "Home",
+		"hidden": true
 	},
 	{
 		"name": "events",
