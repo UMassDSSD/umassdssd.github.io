@@ -1,0 +1,33 @@
+<script type="text/javascript">
+(function(window, wrapperId, googleCalendarID) {
+var document = window.document;
+var element = Util.DOM.Element;
+var wrapper = element(document.getElementById(wrapperId));
+
+function onGoogleCalendarJSONLoad(json) {
+	var events = json["feed"]["entry"];
+	window.gevent = events[0];
+	for(var i = 0, length = events.length; i < length; i++) {
+		wrapper.child(element.pre().child([
+			"Title: " + events[i]["title"]["$t"] + "\n",
+			"Venue: " + events[i]["gd$where"][0]["valueString"] + "\n",
+			"From: " + new Date(events[i]["gd$when"][0]["startTime"]).toLocaleString() + "\n",
+			"To: " + new Date(events[i]["gd$when"][0]["endTime"]).toLocaleString() + "\n",
+			"Description: " + events[i]["content"]["$t"] + "\n\n"
+		]));
+	}
+}
+
+for(var i = 0, length = googleCalendarID.length; i < length; i++) {
+	Util.AJAX.Get("//www.google.com/calendar/feeds/" + googleCalendarID[i] + "/public/full?alt=json&sortorder=descending").success(onGoogleCalendarJSONLoad).load().as("json");
+}
+})(window, "page-content", [
+	"umassdssd@gmail.com"
+]);
+</script>
+
+<style type = "text/css">
+	pre {
+		white-space: pre-wrap;
+	}
+</style>
