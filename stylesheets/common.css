@@ -26,11 +26,8 @@ pre {
 }
 
 body {
-	background: linear-gradient(rgba(0, 0, 0, 1), rgba(10, 41, 114, 1)), black;
-	background-size: 100% 3in, 100% 100%;
-	background-repeat: no-repeat, repeat;
-	background-position: bottom, bottom;
-	background-attachment: fixed;
+	background: linear-gradient(rgba(10, 41, 114, 1), rgba(0, 0, 0, 1)), rgba(0, 0, 0, 1);
+	background-repeat: repeat-x;
 	color: rgba(250, 250, 250, 1);
 }
 
