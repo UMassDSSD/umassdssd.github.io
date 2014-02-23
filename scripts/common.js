@@ -6,68 +6,117 @@ var navigator = window.navigator;
 
 var util = {};
 
+/**
+ * Checks if ajaxGet is an instance of AJAXGet
+ */
 function isAJAXGet(ajaxGet) {
 	return ajaxGet instanceof AJAXGet;
 }
 
+/**
+ * Checks if array is an instance of Array]
+ */
 function isArray(array) {
     return array instanceof Array;
 }
 
+/**
+ * Checks if domElement is an instance of DOMElement
+ */
 function isDOMElement(domElement) {
     return domElement instanceof DOMElement;
 }
 
+/**
+ * Checks if domTokenList is an instance of DOMTokenList
+ */
 function isDOMTokenList(domTokenList) {
     return domTokenList instanceof DOMTokenList;
 }
 
+/**
+ * Checks if the thing has length of zero
+ */
 function isEmpty(thing) {
     return thing.length === 0;
 }
 
+/**
+ * Checks if the thing has length more than zero
+ */
 function isNotEmpty(thing) {
     return thing.length > 0;
 }
 
+/**
+ * Checks if type of theFunction is function
+ */
 function isFunction(theFunction) {
     return typeof theFunction === "function";
 }
 
+/**
+ * Checks if htmlElement is an instance of HTMLElement
+ */
 function isHTMLElement(htmlElement) {
     return htmlElement instanceof HTMLElement;
 }
 
+/**
+ * Checks if nodeList is an instance of NodeList
+ */
 function isNodeList(nodeList) {
     return nodeList instanceof NodeList;
 }
 
+/**
+ * Checks if theObject is an instance of Object
+ */
 function isObject(theObject) {
     return theObject instanceof Object;
 }
 
+/**
+ * Checks if type of string is string
+ */
 function isString(string) {
     return typeof string === "string";
 }
 
+/**
+ * Replaces white spaces of "string" with the string "replaceWith"
+ */
 function replaceWhiteSpaceWith(string, replaceWith) {
     return String(string).replace(/\s/g, String(replaceWith));
 }
 
+/**
+ * Removes any white space of string
+ */
 function removeWhiteSpace(string) {
     return replaceWhiteSpaceWith(string, "");
 }
 
+/**
+ * Removes any empty elements of array
+ */
 function removeEmptyArrayItem(array) {
     return array.filter(function(item) {
         return isNotEmpty(item);
     });
 }
 
+/**
+ * Returns a HTMLElement with tag name tagName (if specified) or "div" (if unspecified)
+ * Basically a shortcut of document.createElement
+ */
 function makeElement(tagName) {
 	return document.createElement(((!!tagName) && isString(tagName) && isNotEmpty(tagName)) ? tagName : "div");
 }
 
+/**
+ * Shortcut of JSON.parse with polyfill
+ */
 function JSONParse(jsonString) {
 	if(isString(jsonString)) {
 		if(isEmpty(jsonString)) {
@@ -89,6 +138,9 @@ function JSONParse(jsonString) {
 
 var url = {};
 
+/**
+ * Returns an parsed JSON Object of GET value of URL
+ */
 function GET() {
 	var loc = location.toString();
 	var args = {};
