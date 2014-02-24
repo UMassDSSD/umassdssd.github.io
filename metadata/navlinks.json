@@ -5,14 +5,14 @@
 		"hidden": true
 	},
 	{
+		"name": "workshops",
+		"title": "Workshops"
 	},
 	{
 		"name": "projects",
 		"title": "Projects"
 	},
 	{
-		"name": "workshops",
-		"title": "Workshops"
 		"name": "calendar",
 		"title": "Calendar"
 	},
