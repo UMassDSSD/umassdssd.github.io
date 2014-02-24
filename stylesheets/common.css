@@ -40,49 +40,66 @@ html, body, #wrapper {
 
 a {
 	text-decoration: none;
-	color: rgba(255, 235, 30, 1);
+	color: rgba(175, 155, 0, 1);
 }
 
 pre {
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto Slab', serif;
+}
+
 body {
-	background: linear-gradient(rgba(10, 41, 114, 1), rgba(0, 0, 0, 1)), rgba(0, 0, 0, 1);
+	background: linear-gradient(rgba(240, 240, 240, 0.5), rgba(240, 240, 240, 1)), rgba(240, 240, 240, 1);
 	background-repeat: repeat-x;
-	color: rgba(250, 250, 250, 1);
+	color: rgba(50, 50, 50, 1);
 }
 
 #wrapper {
-	font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+	font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 	font-size: 0.2in;
 }
 
+#wrapper ::selection {
+	background-color: rgba(255, 215, 0, 0.8);
+	color: rgba(10, 41, 114, 1);
+}
+
 #page-header {
-	position: relative;
-	top: 1em;
-	max-width: 10in;
+	display: block;
+	z-index: 1000;
+	top: 0;
+	width: 100%;
+	background: rgba(245, 245, 245, 0.9);
+	border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
 	margin: 0 auto;
+	-webkit-user-select: none;
 }
 
 #logo {
 	display: inline-block;
-	width: 1in;
-	height: 1in;
+	width: 0.6in;
+	height: 0.6in;
 	overflow: hidden;
 	font-size: 1em;
 	line-height: 5em;
 	text-align: center;
 	text-indent: 100%;
 	white-space: nowrap;
-	background: url('../images/logo-bw.png');
-	background-size: 100% 100%;
+	background: url('../images/logo.png');
+	background-repeat: no-repeat;
+	background-size: 90% 90%;
+	background-position:center;
 }
 
 #navbar {
-	display: inline-block;
+	display: inline;
 	position: absolute;
-	top: 2em;
+	top: 1em;
+	height: 1.5em;
 }
 
 #navbar ul {
@@ -95,30 +112,46 @@ body {
 
 #navbar ul li a {
 	text-decoration: none;
-	margin: 1em;
-	height: 100%;
-	color: rgba(255, 255, 255, 1);
-	transition: text-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+	padding: 0.9em 1em;
+	color: rgba(10, 41, 114, 1);
+	transition: text-shadow 0.2s ease-in-out, color 0.2s ease-in-out, border-bottom 0.02s ease-in-out, background 0.1s ease-in-out;
 	font-weight: 600;
+	border-bottom: 2px rgba(0, 100, 255, 0) solid;
+	background: rgba(255, 255, 255, 0);
 }
 
 #navbar ul li a.current-page {
-	color: rgba(255, 215, 0, 1);
+	color: rgba(10, 91, 254, 1);
 }
 
 #navbar ul li a:hover {
-	text-shadow: 0 0 5px rgba(255, 215, 0, 1);
-	color: rgba(255, 212, 120, 1);
+	background: radial-gradient(circle, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+	text-shadow: 0 0 5px rgba(255, 255, 255, 1);
+	border-bottom: 2px rgba(0, 100, 255, 1) solid;
 }
 
 #page-content {
+	display: block;
 	position: relative;
-	top: 0.5in;
-	margin-top: 2em;
+	top: 0.2in;
+	margin-top: 10em;
 	max-width: 10in;
 	margin: 0 auto;
+	z-index: 999;
+	background: white;
+	padding: 1em;
+	border: 1px solid rgba(127, 127, 127, 0.05);
+	box-shadow: 0 3px 5px rgba(127, 127, 127, 0.5);
 }
 
 #page-content h1 {
-	color: rgba(255, 212, 120, 1);
+	color: #26336d;
+}
+
+#footer {
+	margin-top: 2em;
+	font-size: 0.6em;
+	text-align: center;
+	opacity: 0.3;
+	-webkit-user-select: none;
 }
