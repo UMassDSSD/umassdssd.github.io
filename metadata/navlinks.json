@@ -5,9 +5,6 @@
 		"hidden": true
 	},
 	{
-		"name": "events",
-		"title": "Events"
-	},
 	{
 		"name": "news",
 		"title": "News"
@@ -19,6 +16,8 @@
 	{
 		"name": "workshops",
 		"title": "Workshops"
+		"name": "calendar",
+		"title": "Calendar"
 	},
 	{
 		"name": "about",
