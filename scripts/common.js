@@ -277,7 +277,7 @@ DOMElement["blockquote"]=function(){return new DOMElement("blockquote");}
 DOMElement["body"]=function(){return new DOMElement("body");}
 DOMElement["br"]=function(){return new DOMElement("br");}
 DOMElement["button"]=function(){return new DOMElement("button");}
-DOMElement["canvas"]=function(){return new DOMElement("canvas");}
+DOMElement["canvas"]=function(){var canvas = new DOMElement("canvas");canvas["ctx"]=canvas["element"]["getContext"]("2d");return canvas;}
 DOMElement["caption"]=function(){return new DOMElement("caption");}
 DOMElement["cite"]=function(){return new DOMElement("cite");}
 DOMElement["code"]=function(){return new DOMElement("code");}
