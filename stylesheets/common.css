@@ -11,6 +11,18 @@
 	display: none !important;
 }
 
+.sans-serif {
+	font-family: font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+.serif {
+	font-family: 'Roboto Slab', serif;
+}
+
+.monospace {
+	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+}
+
 .cf:before,
 .cf:after {
     content: " ";
