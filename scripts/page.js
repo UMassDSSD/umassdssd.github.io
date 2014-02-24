@@ -13,13 +13,13 @@ var ajax = Util.AJAX.Get;
 var getGET =  Util.URL.getGET;
 
 var wrapper = element.div().id("wrapper").child([
-	element.header().id("page-header").child([
+	element.header().id("page-header").classList("cf").child([
 		element.a().id("logo").child("UMDSSD").attributes({
 			"href": "."
 		}),
 		element.nav().id("navbar").child(element.ul())
 	]),
-	element.section().id("page-content")
+	element.section().id("page-content").classList("cf"),
 ]);
 
 ajax("metadata/navlinks.json").success(function(links) {
