@@ -15,7 +15,7 @@ var getGET =  Util.URL.getGET;
 var wrapper = element.div().id("wrapper").child([
 	element.header().id("page-header").child([
 		element.a().id("logo").child("UMDSSD").attributes({
-			"href": ".?p=" + homePage
+			"href": "."
 		}),
 		element.nav().id("navbar").child(element.ul())
 	]),
