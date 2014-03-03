@@ -10,7 +10,7 @@ var util = {};
  * Checks if ajaxGet is an instance of AJAXGet
  */
 function isAJAXGet(ajaxGet) {
-	return ajaxGet instanceof AJAXGet;
+    return ajaxGet instanceof AJAXGet;
 }
 
 /**
@@ -111,29 +111,29 @@ function removeEmptyArrayItem(array) {
  * Basically a shortcut of document.createElement
  */
 function makeElement(tagName) {
-	return document.createElement(((!!tagName) && isString(tagName) && isNotEmpty(tagName)) ? tagName : "div");
+    return document.createElement(((!!tagName) && isString(tagName) && isNotEmpty(tagName)) ? tagName : "div");
 }
 
 /**
  * Shortcut of JSON.parse with polyfill
  */
 function JSONParse(jsonString) {
-	if(isString(jsonString)) {
-		if(isEmpty(jsonString)) {
-			jsonString = "{}";
-		}
-		if(isFunction(JSON.parse)) {
-			return JSON.parse(jsonString);
-		} else {
-			return (function(text) {
-				var j, cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;
-				if (text += "", cx.lastIndex = 0, cx.test(text) && (text = text.replace(cx, function(a) {
-					return "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4);
-				})), /^[\],:{}\s]*$/.test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, "@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, "]").replace(/(?:^|:|,)(?:\s*\[)+/g, ""))) return j = eval("(" + text + ")");
-				throw new SyntaxError("JSON.parse");
-			})(jsonString);
-		}
-	}
+    if(isString(jsonString)) {
+        if(isEmpty(jsonString)) {
+            jsonString = "{}";
+        }
+        if(isFunction(JSON.parse)) {
+            return JSON.parse(jsonString);
+        } else {
+            return (function(text) {
+                var j, cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;
+                if (text += "", cx.lastIndex = 0, cx.test(text) && (text = text.replace(cx, function(a) {
+                    return "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4);
+                })), /^[\],:{}\s]*$/.test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, "@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, "]").replace(/(?:^|:|,)(?:\s*\[)+/g, ""))) return j = eval("(" + text + ")");
+                throw new SyntaxError("JSON.parse");
+            })(jsonString);
+        }
+    }
 }
 
 var url = {};
@@ -142,16 +142,16 @@ var url = {};
  * Returns an parsed JSON Object of GET value of URL
  */
 function GET() {
-	var loc = location.toString();
-	var args = {};
-	if(loc.indexOf("?") !== -1) {
-		var query = loc.replace(/^.*?\?/, '').split('&');
-		for(var i = 0, length = query.length; i < length; i++) {
-			var aux = decodeURIComponent(query[i]).split('=');
-			args[aux[0]] = aux[1];
-		}
-	}
-	return args;
+    var loc = location.toString();
+    var args = {};
+    if(loc.indexOf("?") !== -1) {
+        var query = loc.replace(/^.*?\?/, '').split('&');
+        for(var i = 0, length = query.length; i < length; i++) {
+            var aux = decodeURIComponent(query[i]).split('=');
+            args[aux[0]] = aux[1];
+        }
+    }
+    return args;
 }
 url["getGET"] = GET;
 
@@ -164,102 +164,102 @@ var dom = {};
  * @constructor
  */
 function DOMElement(tag) {
-	if(!isDOMElement(this)) {
-		return new DOMElement(tag);
-	}
+    if(!isDOMElement(this)) {
+        return new DOMElement(tag);
+    }
 
-	var element;
+    var element;
 
-	if(isDOMElement(tag)) {
-		element = tag.element;
-	} else if (isHTMLElement(tag)) {
-		element = tag;
-	} else {
-		element = makeElement(isString(tag) ? tag : "");
-	}
+    if(isDOMElement(tag)) {
+        element = tag.element;
+    } else if (isHTMLElement(tag)) {
+        element = tag;
+    } else {
+        element = makeElement(isString(tag) ? tag : "");
+    }
 
-	this["element"] = element;
+    this["element"] = element;
 }
 
 DOMElement.prototype["element"] = DOMElement.prototype.element = null;
 
 DOMElement.prototype["id"] = function(id) {
-	if(isString(id)) {
-		this.element.id = id;
-	}
-	return this;
+    if(isString(id)) {
+        this.element.id = id;
+    }
+    return this;
 };
 
 DOMElement.prototype["classList"] = function(classList) {
-	if(isString(classList)) {
-		classList = classList.split(" ");
-	}
-	if(isArray(classList) || isDOMTokenList(classList)) {
-		for(var i = 0, length = classList.length; i < length; i++) {
-			if(!/^\s*$/.test(classList[i])) {
-				this.element.classList.add(removeWhiteSpace(classList[i]));
-			}
-		}
-	}
-	return this;
+    if(isString(classList)) {
+        classList = classList.split(" ");
+    }
+    if(isArray(classList) || isDOMTokenList(classList)) {
+        for(var i = 0, length = classList.length; i < length; i++) {
+            if(!/^\s*$/.test(classList[i])) {
+                this.element.classList.add(removeWhiteSpace(classList[i]));
+            }
+        }
+    }
+    return this;
 }
 
 DOMElement.prototype["toggleClass"] = function(className) {
-	if(isString(className)) {
-		className = removeEmptyArrayItem(className.split(" "));
-		for(var i = 0, length = className.length; i < length; i++) {
-			if(this.element.className.search(className[i]) === -1) {
-				this.element.classList.add(className[i]);
-			} else {
-				this.element.classList.remove(className[i]);
-			}
-		}
-	}
-	return this;
+    if(isString(className)) {
+        className = removeEmptyArrayItem(className.split(" "));
+        for(var i = 0, length = className.length; i < length; i++) {
+            if(this.element.className.search(className[i]) === -1) {
+                this.element.classList.add(className[i]);
+            } else {
+                this.element.classList.remove(className[i]);
+            }
+        }
+    }
+    return this;
 }
 
 DOMElement.prototype["attributes"] = function(attributes) {
-	if(isString(attributes)) {
-		attributes = JSONParse(attributes);
-	}
-	if(isObject(attributes)) {
-		for(var key in attributes) {
-			this.element.setAttribute(key, attributes[key]);
-		}
-	}
-	return this;
+    if(isString(attributes)) {
+        attributes = JSONParse(attributes);
+    }
+    if(isObject(attributes)) {
+        for(var key in attributes) {
+            this.element.setAttribute(key, attributes[key]);
+        }
+    }
+    return this;
 }
 
 DOMElement.prototype["eventListener"] = function(type, listener, useCapture) {
-	this.element.addEventListener(type, listener, useCapture);
-	return this;
+    this.element.addEventListener(type, listener, useCapture);
+    return this;
 }
 
 DOMElement.prototype["child"] = function(child) {
-	if(isDOMElement(child) || isHTMLElement(child)) {
-		if(isDOMElement(child)) {
-			child = child.element;
-		}
-		this.element.appendChild(child);
-	} else if(isNotEmpty(child)) {
-		if(isString(child)) {
-			this.element.innerHTML += child;
-		} else if (isArray(child) || isNodeList(child)) {
-			for(var i = 0, length = child.length; i < length; i++) {
-				if(child[i]) {
-					if(isString(child[i])) {
-						this.element.innerHTML += child[i];
-					} else if(isDOMElement(child[i]) || isHTMLElement(child[i])) {
-						if(isDOMElement(child[i])) {
-							child[i] = child[i].element;
-						}
-						this.element.appendChild(child[i]);
-					}
-				}
-			}
-		}
-	}
-	return this;
+    if(isDOMElement(child) || isHTMLElement(child)) {
+        if(isDOMElement(child)) {
+            child = child.element;
+        }
+        this.element.appendChild(child);
+    } else if(isNotEmpty(child)) {
+        if(isString(child)) {
+            this.element.innerHTML += child;
+        } else if (isArray(child) || isNodeList(child)) {
+            for(var i = 0, length = child.length; i < length; i++) {
+                if(child[i]) {
+                    if(isString(child[i])) {
+                        this.element.innerHTML += child[i];
+                    } else if(isDOMElement(child[i]) || isHTMLElement(child[i])) {
+                        if(isDOMElement(child[i])) {
+                            child[i] = child[i].element;
+                        }
+                        this.element.appendChild(child[i]);
+                    }
+                }
+            }
+        }
+    }
+    return this;
 }
 
 DOMElement["a"]=function(){return new DOMElement("a");}
@@ -383,24 +383,24 @@ var ajax = {};
  * @constructor
  */
 function AJAXGet(path) {
-	if(!isAJAXGet(this)) {
-		return new AJAXGet(path);
-	}
+    if(!isAJAXGet(this)) {
+        return new AJAXGet(path);
+    }
 
-	if(!isString(path)) {
-		path = "";
-	}
+    if(!isString(path)) {
+        path = "";
+    }
 
-	var xhr = new XMLHttpRequest();
-	var self = this;
+    var xhr = new XMLHttpRequest();
+    var self = this;
 
-	var loaded = false;
+    var loaded = false;
 
-	var successCallback;
-	var failCallback;
-	var async = true;
+    var successCallback;
+    var failCallback;
+    var async = true;
 
-	var types = [{
+    var types = [{
         "name": "raw",
         "parse": function(txt) {
             return txt;
@@ -415,46 +415,46 @@ function AJAXGet(path) {
         }
     });
 
-	this["path"] = function(thePath) {
-		path = isString(thePath) ? thePath : "";
-		return self;
-	}
+    this["path"] = function(thePath) {
+        path = isString(thePath) ? thePath : "";
+        return self;
+    }
 
-	this["success"] = function(callback) {
-		if(isFunction(callback)) {
-			successCallback = callback
-		} else {
-			throw new Error("The argument isn't a function.");
-		}
-		return self;
-	}
+    this["success"] = function(callback) {
+        if(isFunction(callback)) {
+            successCallback = callback
+        } else {
+            throw new Error("The argument isn't a function.");
+        }
+        return self;
+    }
 
-	this["fail"] = function(callback) {
-		if(isFunction(callback)) {
-			failCallback = callback;
-		} else {
-			throw new Error("The arugment isn't a function");
-		}
-		return self;
-	}
+    this["fail"] = function(callback) {
+        if(isFunction(callback)) {
+            failCallback = callback;
+        } else {
+            throw new Error("The arugment isn't a function");
+        }
+        return self;
+    }
 
-	this["async"] = function(asyncFlag) {
-		async = Boolean(asyncFlag);
-		return self;
-	}
+    this["async"] = function(asyncFlag) {
+        async = Boolean(asyncFlag);
+        return self;
+    }
 
-	this["load"] = function() {
-		loaded = false;
-		if(!path || (isString(path) && isEmpty(path))) {
-			throw new Error('Variable "path" is not initiated yet.');
-		}
+    this["load"] = function() {
+        loaded = false;
+        if(!path || (isString(path) && isEmpty(path))) {
+            throw new Error('Variable "path" is not initiated yet.');
+        }
 
-		xhr.open("GET", path, true);
-		xhr.send();
+        xhr.open("GET", path, true);
+        xhr.send();
 
-		var actions = {};
+        var actions = {};
 
-		actions["as"] = function(dataType) {
+        actions["as"] = function(dataType) {
             var id = types.map(function(i){return i.name;}).indexOf(dataType);
             var valid = id != -1;
             typeID = valid ? id : 0;
@@ -462,13 +462,13 @@ function AJAXGet(path) {
         }
 
         return actions;
-	}
+    }
 
-	this["isLoaded"] = function() {
-		return loaded;
-	}
+    this["isLoaded"] = function() {
+        return loaded;
+    }
 
-	xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function() {
         if(xhr.readyState === 4) {
             loaded = true;
             if(xhr.status === 200) {
