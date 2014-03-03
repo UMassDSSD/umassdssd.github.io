@@ -20,7 +20,7 @@ var wrapper = element.div().id("wrapper").child([
 		element.nav().id("navbar").child(element.ul())
 	]),
 	element.section().id("page-content").classList("cf"),
-	element.footer().id("footer").child("UMassD SSD &copy; 2014")
+	element.footer().id("footer").child("UMassD SSD &copy; 2014" + (((new Date()).getFullYear() > 2014) ? ("-" + (new Date()).getFullYear()) : ""))
 ]);
 
 ajax("metadata/navlinks.json").success(function(links) {
