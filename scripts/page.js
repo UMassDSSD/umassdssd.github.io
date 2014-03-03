@@ -28,21 +28,28 @@ ajax("metadata/navlinks.json").success(function(links) {
         links.map(function(linkMeta) {
             return element.li().child(element.a().classList("serif").child(linkMeta["title"]).attributes({
                 "href": ".?p=" + linkMeta["name"]
-            }).id("navlink-" + linkMeta["name"])).classList(Boolean(linkMeta["hidden"]) ? "hidden" : "");
+            }).id("navlink-" + linkMeta["name"])).classList(Boolean(linkMeta["hidden"]) ? "hidden" : "")
+            .eventListener("click", function(ev) {
+            	ev.preventDefault();
+            	switchPage(linkMeta["name"]);
+            	$(ev.target).addClass("current-page");
+            }, false);
         })
     );
 }).load().as("json");
 
 var cp = getGET()["p"];
 
-ajax("pages/" + (((!!cp) && (typeof cp === "string") && (cp.length > 0)) ? getGET()["p"] : (cp = homePage)) + ".html").success(function(html) {
-    element(document.getElementById("navlink-" + cp)).classList("current-page");
-    element(document.getElementById("page-content")).child(html);
-    eval(Array.prototype.slice.call(document.getElementById("page-content").getElementsByTagName("script")).map(function(a){return a.innerHTML}).join(";"));
-}).load();
+function switchPage(page) {
+	$("#page-content").load("pages/" + page + ".html");
+	$("#navbar ul li a").each(function(i, link) {
+		$(this).removeClass("current-page");
+	});
+}
 
 function onPageLoad() {
     element(document.body).child(wrapper);
+    switchPage(cp);
 }
 
 window.addEventListener("load", onPageLoad, false);
