@@ -16,7 +16,10 @@ var wrapper = element.div().id("wrapper").child([
     element.header().id("page-header").classList("cf").child([
         element.a().id("logo").child("UMDSSD").attributes({
             "href": "."
-        }),
+        }).eventListener("click", function(ev) {
+            ev.preventDefault();
+            switchPage(homePage);
+        }, false),
         element.nav().id("navbar").child(element.ul())
     ]),
     element.section().id("page-content").classList("cf"),
@@ -38,7 +41,7 @@ ajax("metadata/navlinks.json").success(function(links) {
     );
 }).load().as("json");
 
-var cp = getGET()["p"];
+var cp = getGET()["p"] || homePage;
 
 function switchPage(page) {
 	$("#page-content").load("pages/" + page + ".html");
