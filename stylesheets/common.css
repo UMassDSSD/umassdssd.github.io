@@ -107,7 +107,7 @@ body {
 }
 
 #navbar ul li {
-	display: inline-block;
+	display: inline;
 }
 
 #navbar ul li a {
