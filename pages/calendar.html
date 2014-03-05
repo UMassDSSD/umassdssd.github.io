@@ -10,7 +10,7 @@ function onGoogleCalendarJSONLoad(json) {
 	for(var i = 0, length = events.length; i < length; i++) {
 		wrapper.child(element.pre().child([
 			"Title: " + events[i]["title"]["$t"] + "\n",
-			"Venue: " + events[i]["gd$where"][0]["valueString"] + "\n",
+			"Location: " + events[i]["gd$where"][0]["valueString"] + "\n",
 			"From: " + new Date(events[i]["gd$when"][0]["startTime"]).toLocaleString() + "\n",
 			"To: " + new Date(events[i]["gd$when"][0]["endTime"]).toLocaleString() + "\n",
 			"Description: " + events[i]["content"]["$t"] + "\n\n"
