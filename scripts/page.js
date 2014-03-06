@@ -20,14 +20,14 @@ var wrapper = element.div().id("wrapper").child([
             ev.preventDefault();
             switchPage(homePage);
         }, false),
-        element.nav().id("navbar").child(element.ul())
+        element.nav().id("navbar").child(element.ul().id("navbar-list"))
     ]),
     element.section().id("page-content").classList("cf"),
     element.footer().id("footer").child("UMassD SSD &copy; 2014" + (((new Date()).getFullYear() > 2014) ? ("-" + (new Date()).getFullYear()) : ""))
 ]);
 
 ajax("metadata/navlinks.json").success(function(links) {
-    element(document.getElementById("navbar").firstChild).child(
+    element(document.getElementById("navbar-list")).child(
         links.map(function(linkMeta) {
             return element.li().child(element.a().classList("serif").child(linkMeta["title"]).attributes({
                 "href": ".?p=" + linkMeta["name"]
