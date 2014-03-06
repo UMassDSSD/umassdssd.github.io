@@ -4,6 +4,8 @@ var document = window.document;
 var element = Util.DOM.Element;
 var wrapper = element(document.getElementById(wrapperId));
 
+/* Perhaps we could get descriptions to word wrap? */
+
 function onGoogleCalendarJSONLoad(json) {
 	var events = json["feed"]["entry"];
 	window.gevent = events[0];
