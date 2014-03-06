@@ -1,5 +1,5 @@
 <script>
-(function(window, wrapperId) {
+(function(window, wrapperId, undefined) {
 "use strict";
 var document = window.document;
 var element = Util.DOM.Element;
@@ -22,7 +22,7 @@ function onGoogleCalendarJSONLoad(json) {
 }
 
 window.pushGoogleCalendarJSON = onGoogleCalendarJSONLoad;
-})(window, "page-content");
+})(window, "page-content", void 0);
 </script>
 
 <script src="//www.google.com/calendar/feeds/umassdssd@gmail.com/public/full?alt=json-in-script&callback=pushGoogleCalendarJSON&sortorder=descending"></script>
