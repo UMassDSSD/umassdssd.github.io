@@ -4,7 +4,7 @@ var document = window.document;
 var element = Util.DOM.Element;
 var wrapper = element(document.getElementById(wrapperId));
 
-/* Perhaps we could get descriptions to word wrap? */
+/* It seems to look cleaner with just the full calendar showing */
 
 function onGoogleCalendarJSONLoad(json) {
 	var events = json["feed"]["entry"];
