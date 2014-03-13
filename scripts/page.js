@@ -26,7 +26,7 @@ var wrapper = element.div().id("wrapper").child([
     element.footer().id("footer").child("UMassD SSD &copy; 2014" + (((new Date()).getFullYear() > 2014) ? ("-" + (new Date()).getFullYear()) : ""))
 ]);
 
-ajax("metadata/navlinks.json").success(function(links) {
+$.getJSON("metadata/navlinks.json", function(links) {
     element(document.getElementById("navbar-list")).child(
         links.map(function(linkMeta) {
             return element.li().child(element.a().classList("serif").child(linkMeta["title"]).attributes({
@@ -39,7 +39,7 @@ ajax("metadata/navlinks.json").success(function(links) {
             }, false);
         })
     );
-}).load().as("json");
+});
 
 var cp = getGET()["p"] || homePage;
 
@@ -51,7 +51,7 @@ function switchPage(page) {
 }
 
 function onPageLoad() {
-    element(document.body).child(wrapper);
+    $(document.body).append(wrapper.element);
     switchPage(cp);
 }
 
