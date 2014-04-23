@@ -29,7 +29,7 @@ var wrapper = $("<div>").attr("id", "wrapper").append([
         $("<nav>").attr("id", "navbar").append($("<ul>").attr("id", "navbar-list"))
     ]),
     $("<section>").attr("id", "page-content").addClass("cf"),
-    $("<footer>").attr("id", "footer").text("UMassD SSD &copy; 2014" + (((new Date()).getFullYear() > 2014) ? ("-" + (new Date()).getFullYear()) : ""))
+    $("<footer>").attr("id", "footer").text("UMassD SSD © 2014" + (((new Date()).getFullYear() > 2014) ? ("-" + (new Date()).getFullYear()) : ""))
 ]);
 
 $.getJSON("metadata/navlinks.json", function(links) {
