@@ -7,37 +7,39 @@ var document = window.document;
 var location = window.location;
 var navigator = window.navigator;
 
-//Shortcut to Util.DOM.Element
-var element = Util.DOM.Element;
-var getGET =  Util.URL.getGET;
+function getGET() {
+    var loc = location.toString();
+    var args = {};
+    if(loc.indexOf("?") !== -1) {
+        var query = loc.replace(/^.*?\?/, '').split('&');
+        for(var i = 0, length = query.length; i < length; i++) {
+            var aux = decodeURIComponent(query[i]).split('=');
+            args[aux[0]] = aux[1];
+        }
+    }
+    return args;
+};
 
-var wrapper = element.div().id("wrapper").child([
-    element.header().id("page-header").classList("cf").child([
-        element.a().id("logo").child("UMDSSD").attributes({
-            "href": "."
-        }).eventListener("click", function(ev) {
+var wrapper = $("<div>").attr("id", "wrapper").append([
+    $("<header>").attr("id", "page-header").addClass("cf").append([
+        $("<a>").attr({"id": "logo", "href": "."}).text("UMDSSD").click(function(ev) {
             ev.preventDefault();
             switchPage(homePage);
-        }, false),
-        element.nav().id("navbar").child(element.ul().id("navbar-list"))
+        }),
+        $("<nav>").attr("id", "navbar").append($("<ul>").attr("id", "navbar-list"))
     ]),
-    element.section().id("page-content").classList("cf"),
-    element.footer().id("footer").child("UMassD SSD &copy; 2014" + (((new Date()).getFullYear() > 2014) ? ("-" + (new Date()).getFullYear()) : ""))
+    $("<section>").attr("id", "page-content").addClass("cf"),
+    $("<footer>").attr("id", "footer").text("UMassD SSD &copy; 2014" + (((new Date()).getFullYear() > 2014) ? ("-" + (new Date()).getFullYear()) : ""))
 ]);
 
 $.getJSON("metadata/navlinks.json", function(links) {
-    element(document.getElementById("navbar-list")).child(
-        links.map(function(linkMeta) {
-            return element.li().child(element.a().classList("serif").child(linkMeta["title"]).attributes({
-                "href": ".?p=" + linkMeta["name"]
-            }).id("navlink-" + linkMeta["name"])).classList(Boolean(linkMeta["hidden"]) ? "hidden" : "")
-            .eventListener("click", function(ev) {
-            	ev.preventDefault();
-            	switchPage(linkMeta["name"]);
-            	$(ev.target).addClass("current-page");
-            }, false);
-        })
-    );
+    $("#navbar-list").append(links.map(function(meta) {
+        return $("<li>").addClass(Boolean(meta["hidden"]) ? "hidden" : "").click(function(ev) {
+            ev.preventDefault();
+            switchPage(meta["name"]);
+            $(ev.target).addClass("current-page");
+        }).append($("<a>").addClass("serif").attr({"id": "navlink-" + meta["name"],"href": ".?p=" + meta["name"]}).text(meta["title"]))
+    }))
 });
 
 var cp = getGET()["p"] || homePage;
@@ -50,7 +52,7 @@ function switchPage(page) {
 }
 
 function onPageLoad() {
-    $(document.body).append(wrapper.element);
+    $(document.body).append(wrapper);
     switchPage(cp);
 }
 
