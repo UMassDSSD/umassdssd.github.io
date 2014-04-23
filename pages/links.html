@@ -1,5 +1,11 @@
 <script>
-var links = [
+(function($, links) {
+	$(function() {
+		$("#page-content").append($("<ul>").append(links.map(function(meta){
+			return $("<li>").append($("<a>").attr("href", meta["url"]).text(meta["title"]));
+		})));
+	});
+})($, [
 	{
 		"title": "Facebook",
 		"url": "//facebook.com/groups/566724943376702"
@@ -12,15 +18,7 @@ var links = [
 		"title": "LinkedIn",
 		"url": "//linkedin.com/groups?gid=7413339"
 	}
-];
-
-var element = Util.DOM.Element;
-element(document.getElementById("page-content")).child(element.ul().child(links.map(function(linkMeta){
-	return element.li().child(element.a().child(linkMeta["title"]).attributes({
-		"href": linkMeta["url"],
-		"target": "_blank"
-	}));
-})));
+]);
 </script>
 
 <style type="text/css">
