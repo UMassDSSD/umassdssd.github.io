@@ -6,11 +6,13 @@
 	},
 	{
 		"name": "workshops",
-		"title": "Workshops"
+		"title": "Workshops",
+		"hidden": true
 	},
 	{
 		"name": "projects",
-		"title": "Projects"
+		"title": "Projects",
+		"hidden": true
 	},
 	{
 		"name": "calendar",
