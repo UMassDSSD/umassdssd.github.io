@@ -19,7 +19,7 @@ function getGET() {
         }
     }
     return args;
-};
+}
 
 var wrapper = $("<div>").attr("id", "wrapper").append([
     $("<header>").attr("id", "page-header").addClass("cf").append([
@@ -63,6 +63,9 @@ function onPopState(ev) {
 
 function onPageLoad($) {
     $(document.body).append(wrapper);
+    if(getGET().hasOwnProperty("only")) {
+        $("#page-header").addClass("hidden");
+    }
     switchPage(cp);
 }
 
