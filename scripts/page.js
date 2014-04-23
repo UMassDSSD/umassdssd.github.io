@@ -50,7 +50,7 @@ function loadPage(page) {
 }
 
 function switchPage(page) {
-    history.pushState({"page": page}, "", "?p=" + page);
+    history.pushState({"page": page}, "", page === homePage ? "." : ("?p=" + page));
     loadPage(page);
 	$("#navbar ul li a").each(function(i, link) {
 		$(this).removeClass("current-page");
@@ -58,7 +58,7 @@ function switchPage(page) {
 }
 
 function onPopState(ev) {
-    loadPage(getGET()["p"]);
+    loadPage(getGET()["p"] || homePage);
 }
 
 function onPageLoad($) {
