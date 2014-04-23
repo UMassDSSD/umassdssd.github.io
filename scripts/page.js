@@ -6,6 +6,7 @@ var homePage = "home";
 var document = window.document;
 var location = window.location;
 var navigator = window.navigator;
+var history = window.history;
 
 function getGET() {
     var loc = location.toString();
@@ -44,18 +45,28 @@ $.getJSON("metadata/navlinks.json", function(links) {
 
 var cp = getGET()["p"] || homePage;
 
+function loadPage(page) {
+    $("#page-content").load("pages/" + page + ".html");
+}
+
 function switchPage(page) {
-	$("#page-content").load("pages/" + page + ".html");
+    history.pushState({"page": page}, "", "?p=" + page);
+    loadPage(page);
 	$("#navbar ul li a").each(function(i, link) {
 		$(this).removeClass("current-page");
 	});
 }
 
-function onPageLoad() {
+function onPopState(ev) {
+    loadPage(getGET()["p"]);
+}
+
+function onPageLoad($) {
     $(document.body).append(wrapper);
     switchPage(cp);
 }
 
+$(window).bind("popstate", onPopState);
 $(onPageLoad);
 })(window);
 
