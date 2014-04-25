@@ -9,11 +9,9 @@ var navigator = window.navigator;
 var history = window.history;
 
 function getGET() {
-    var loc = location.toString();
-    var args = {};
+    var loc = location.toString(), args = {};
     if(loc.indexOf("?") !== -1) {
-        var query = loc.replace(/^.*?\?/, '').split('&');
-        for(var i = 0, length = query.length; i < length; i++) {
+        for(var query = loc.replace(/^.*?\?/, '').split('&'), i = 0, length = query.length; i < length; i++) {
             var aux = decodeURIComponent(query[i]).split('=');
             args[aux[0]] = aux[1];
         }
