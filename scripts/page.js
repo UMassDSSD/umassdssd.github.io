@@ -38,7 +38,6 @@ $.getJSON("metadata/navlinks.json", function(links) {
         return $("<li>").addClass(Boolean(meta["hidden"]) ? "hidden" : "").click(function(ev) {
             ev.preventDefault();
             switchPage(meta["name"]);
-            $(ev.target).addClass("current-page");
         }).append($("<a>").addClass("serif").attr({"id": "navlink-" + meta["name"],"href": ".?p=" + meta["name"]}).text(meta["title"]))
     }))
 });
@@ -50,10 +49,11 @@ function loadPage(page) {
 }
 
 function switchPage(page) {
+    var expectedId = "navlink-" + page;
     history.pushState({"page": page}, "", page === homePage ? "." : ("?p=" + page));
     loadPage(page);
 	$("#navbar ul li a").each(function(i, link) {
-		$(this).removeClass("current-page");
+        $(link).toggleClass("current-page", $(link).attr("id") === expectedId);
 	});
 }
 
