@@ -70,5 +70,3 @@ function onPageLoad($) {
 $(window).bind("popstate", onPopState);
 $(onPageLoad);
 })(window);
-
-(function(d){var a=d.document,b=[];$(a).keydown(function(c){b.push(c.keyCode);0<=b.toString().indexOf("38,38,40,40,37,39,37,39,66,65")&&($(a).unbind("keydown",c.callee),$("<audio>").attr({src:"http://nyan.cat/music/original.mp3",autoplay:"autoplay",loop:"loop"}).appendTo("body"),$("body div#wrapper *").after($("<img>").addClass({}).attr("src","http://www.nyan.cat/cats/original.gif")))})})(window);
