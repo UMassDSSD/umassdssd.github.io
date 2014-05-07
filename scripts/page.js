@@ -36,7 +36,11 @@ $.getJSON("metadata/navlinks.json", function(links) {
         return $("<li>").addClass(Boolean(meta["hidden"]) ? "hidden" : "").click(function(ev) {
             ev.preventDefault();
             switchPage(meta["name"]);
-        }).append($("<a>").addClass("serif").attr({"id": "navlink-" + meta["name"],"href": ".?p=" + meta["name"]}).text(meta["title"]))
+        }).append($("<a>").addClass("serif").attr({
+            "id": "navlink-" + meta["name"],
+            "href": ".?p=" + meta["name"],
+            "title": meta["description"] || meta["title"]
+        }).text(meta["title"]))
     }))
 });
 
