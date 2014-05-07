@@ -7,12 +7,12 @@
 	{
 		"name": "workshops",
 		"title": "Workshops",
-		"hidden": true //We don't have any workshops yet.
+		"hidden": true
 	},
 	{
 		"name": "projects",
 		"title": "Projects",
-		"hidden": true //We don't have any projects yet,
+		"hidden": true
 	},
 	{
 		"name": "calendar",
