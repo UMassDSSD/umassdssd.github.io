@@ -1,3 +1,4 @@
+var $buoop = {};
 (function(window) {
 "use strict";
 
@@ -63,12 +64,21 @@ function onPopState(ev) {
     loadPage(getGET()["p"] || homePage);
 }
 
+function loadBrowserUpdateCheck() {
+    try {if ($buoop.ol) $buoop.ol();}catch (e) {}
+    var e = document.createElement("script");
+    e.setAttribute("type", "text/javascript");
+    e.setAttribute("src", "//browser-update.org/update.js");
+    document.body.appendChild(e);
+}
+
 function onPageLoad($) {
     $(document.body).append(wrapper);
     if(getGET().hasOwnProperty("only")) {
         $("#page-header").addClass("hidden");
     }
     switchPage(cp);
+    loadBrowserUpdateCheck();
 }
 
 $(window).bind("popstate", onPopState);
