@@ -15,6 +15,11 @@
 		"hidden": true
 	},
 	{
+		"name": "irc",
+		"title": "IRC",
+		"hidden": false
+	},
+	{
 		"name": "calendar",
 		"title": "Calendar"
 	},
