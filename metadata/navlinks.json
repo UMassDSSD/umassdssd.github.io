@@ -21,18 +21,16 @@
 	},
 	{
 		"name": "calendar",
-		"title": "Calendar"
+		"title": "Calendar",
+		"hidden": true
 	},
 	{
 		"name": "about",
-		"title": "About"
+		"title": "About",
+		"hidden": true
 	},
 	{
 		"name": "links",
 		"title": "Find Us"
-	},
-	{
-		"name": "contact",
-		"title": "Contact"
 	}
 ]
